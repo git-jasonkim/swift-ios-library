@@ -10,5 +10,6 @@ import Foundation
 enum ReuseIdentifier {
     
     static let cCraftCell = "CraftCell"
+    static let cGenericCell = "GenericCell"
     
 }

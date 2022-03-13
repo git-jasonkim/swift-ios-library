@@ -1,20 +1,21 @@
 //
-//  CraftController+CV.swift
+//  GenericController+CV.swift
 //  CraftingGuide
 //
-//  Created by Jason Kim on 3/11/22.
+//  Created by Jason Kim on 3/13/22.
 //
 
 import Foundation
 import UIKit
 
-class CraftController: UICollectionViewController {
+class GenericController: UICollectionViewController {
     
-    public var handlePresentSelection: (() -> ())?
+    public let vm: GenericViewModel
     
-    override init(collectionViewLayout: UICollectionViewLayout) {
+    init(vm: GenericViewModel, collectionViewLayout: UICollectionViewLayout) {
+        self.vm = vm
         super.init(collectionViewLayout: collectionViewLayout)
-        print("CraftController initialized")
+        print("GenericController initialized")
     }
     
     required init?(coder: NSCoder) {
@@ -22,12 +23,21 @@ class CraftController: UICollectionViewController {
     }
     
     deinit {
-        print("CraftController deinitialized")
+        print("GenericController deinitialized")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupViewModel()
         setupController()
+    }
+    
+    private func setupViewModel() {
+        vm.reloadData = { [weak self] in
+            self?.collectionView.reloadData()
+//            self?.collectionView.refreshControl?.endRefreshing()
+        }
+        vm.retrieveData()
     }
     
     private func setupController() {
@@ -35,7 +45,7 @@ class CraftController: UICollectionViewController {
         collectionView.showsVerticalScrollIndicator = true
         collectionView.alwaysBounceVertical = true
         
-        collectionView.register(CraftCell.self, forCellWithReuseIdentifier: ReuseIdentifier.cCraftCell)
+        collectionView.register(GenericCell.self, forCellWithReuseIdentifier: ReuseIdentifier.cGenericCell)
 
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
@@ -44,23 +54,17 @@ class CraftController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return vm.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let craftCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.cCraftCell, for: indexPath) as! CraftCell
-        return craftCell
+        let genericCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.cGenericCell, for: indexPath) as! GenericCell
+        genericCell.setGenericLabel(text: vm.getText(of: indexPath.item))
+        return genericCell
     }
-    
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.handlePresentSelection?()
-    }
-    
-    
 }
 
-extension CraftController: UICollectionViewDelegateFlowLayout {
-    
+extension GenericController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
@@ -69,4 +73,3 @@ extension CraftController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: collectionView.frame.width, height: 40)
     }
 }
-
