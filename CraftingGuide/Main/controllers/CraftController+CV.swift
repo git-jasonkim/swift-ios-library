@@ -10,7 +10,15 @@ import UIKit
 
 class CraftController: UICollectionViewController {
     
-    public var handlePresentSelection: (() -> ())?
+    deinit {
+        print("CraftController deinitialized")
+    }
+    
+    public var handlePresentSelection: ((Controller) -> ())?
+    
+    private let crafts: [Craft] = [
+        Craft(name: "Wispy", controller: .wispyanimation)
+    ]
     
     override init(collectionViewLayout: UICollectionViewLayout) {
         super.init(collectionViewLayout: collectionViewLayout)
@@ -21,17 +29,13 @@ class CraftController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("CraftController deinitialized")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
     }
     
     private func setupController() {
-        collectionView.backgroundColor = .lightGray
+        collectionView.backgroundColor = Color.craftBlue
         collectionView.showsVerticalScrollIndicator = true
         collectionView.alwaysBounceVertical = true
         
@@ -39,21 +43,22 @@ class CraftController: UICollectionViewController {
 
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .vertical
-            layout.minimumLineSpacing = 2
+            layout.minimumLineSpacing = 5
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return crafts.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let craftCell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseIdentifier.cCraftCell, for: indexPath) as! CraftCell
+        craftCell.name = crafts[indexPath.item].name
         return craftCell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.handlePresentSelection?()
+        self.handlePresentSelection?(crafts[indexPath.item].controller)
     }
     
     
@@ -66,7 +71,7 @@ extension CraftController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 40)
+        return CGSize(width: collectionView.frame.width, height: 70)
     }
 }
 

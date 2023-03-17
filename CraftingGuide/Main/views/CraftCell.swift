@@ -14,6 +14,13 @@ class CraftCell: UICollectionViewCell {
         print("CraftCell deinitialized")
     }
     
+    public var name: String? {
+        didSet {
+            guard let name = name else { return }
+            craftName.text = name
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -29,15 +36,15 @@ class CraftCell: UICollectionViewCell {
     
     private lazy var craftName: UILabel = {
         let label = UILabel()
-        label.text = "Craft name goes here"
-        label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        label.textColor = Color.craftBlack
         return label
     }()
     
     private func setupView() {
         backgroundColor = .white
         addSubview(craftName)
-        craftName.anchor(centerX: nil, centerY: centerYAnchor, top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 12, paddingBottom: 0, paddingTrailing: 12, width: 0, height: 0)
+        craftName.anchor(centerX: nil, centerY: centerYAnchor, top: nil, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 16, paddingBottom: 0, paddingTrailing: 16, width: 0, height: 0)
     }
     
 }

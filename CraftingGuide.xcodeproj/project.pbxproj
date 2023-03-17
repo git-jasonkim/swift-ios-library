@@ -20,6 +20,10 @@
 		5CD3C83827DB1FC600251F42 /* CraftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3C83727DB1FC600251F42 /* CraftCell.swift */; };
 		5CD3C83A27DB1FFB00251F42 /* CraftController+CV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3C83927DB1FFB00251F42 /* CraftController+CV.swift */; };
 		5CD3C83F27DB20BF00251F42 /* ReuseIdentifier+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD3C83E27DB20BF00251F42 /* ReuseIdentifier+Enum.swift */; };
+		E0E8C58B29C46214005D020F /* Color+Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8C58A29C46214005D020F /* Color+Enum.swift */; };
+		E0E8C58D29C46240005D020F /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8C58C29C46240005D020F /* UIColor+Ext.swift */; };
+		E0E8C59029C464F0005D020F /* Craft+Struct.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8C58F29C464F0005D020F /* Craft+Struct.swift */; };
+		E0E8C59329C466E7005D020F /* WispyAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8C59229C466E7005D020F /* WispyAnimationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		5CD3C83727DB1FC600251F42 /* CraftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CraftCell.swift; sourceTree = "<group>"; };
 		5CD3C83927DB1FFB00251F42 /* CraftController+CV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CraftController+CV.swift"; sourceTree = "<group>"; };
 		5CD3C83E27DB20BF00251F42 /* ReuseIdentifier+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReuseIdentifier+Enum.swift"; sourceTree = "<group>"; };
+		E0E8C58A29C46214005D020F /* Color+Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Enum.swift"; sourceTree = "<group>"; };
+		E0E8C58C29C46240005D020F /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		E0E8C58F29C464F0005D020F /* Craft+Struct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Craft+Struct.swift"; sourceTree = "<group>"; };
+		E0E8C59229C466E7005D020F /* WispyAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WispyAnimationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,8 @@
 		5C766ADE27D71B930040F2A9 /* CraftingGuide */ = {
 			isa = PBXGroup;
 			children = (
+				E0E8C59129C466C9005D020F /* controllers */,
+				E0E8C58E29C464D5005D020F /* models */,
 				5C766AF327D9EA090040F2A9 /* extensions */,
 				5CD3C83B27DB207B00251F42 /* enums */,
 				5CD3C83427DB1B6F00251F42 /* Main */,
@@ -122,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				5C766AF427D9EA220040F2A9 /* UIView+Ext.swift */,
+				E0E8C58C29C46240005D020F /* UIColor+Ext.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -156,8 +167,25 @@
 			isa = PBXGroup;
 			children = (
 				5CD3C83E27DB20BF00251F42 /* ReuseIdentifier+Enum.swift */,
+				E0E8C58A29C46214005D020F /* Color+Enum.swift */,
 			);
 			path = enums;
+			sourceTree = "<group>";
+		};
+		E0E8C58E29C464D5005D020F /* models */ = {
+			isa = PBXGroup;
+			children = (
+				E0E8C58F29C464F0005D020F /* Craft+Struct.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		E0E8C59129C466C9005D020F /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				E0E8C59229C466E7005D020F /* WispyAnimationController.swift */,
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,15 +259,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C36AA2227DDCCA70040AFBD /* GenericController+CV.swift in Sources */,
+				E0E8C59029C464F0005D020F /* Craft+Struct.swift in Sources */,
 				5C36AA2927DDD2670040AFBD /* GenericViewModel.swift in Sources */,
+				E0E8C58B29C46214005D020F /* Color+Enum.swift in Sources */,
 				5CD3C83A27DB1FFB00251F42 /* CraftController+CV.swift in Sources */,
 				5CD3C83827DB1FC600251F42 /* CraftCell.swift in Sources */,
 				5C766AF527D9EA220040F2A9 /* UIView+Ext.swift in Sources */,
+				E0E8C58D29C46240005D020F /* UIColor+Ext.swift in Sources */,
 				5C766AE427D71B930040F2A9 /* ViewController.swift in Sources */,
 				5CD3C83F27DB20BF00251F42 /* ReuseIdentifier+Enum.swift in Sources */,
 				5C766AE027D71B930040F2A9 /* AppDelegate.swift in Sources */,
 				5C36AA2627DDCCC90040AFBD /* GenericCell.swift in Sources */,
 				5C766AE227D71B930040F2A9 /* SceneDelegate.swift in Sources */,
+				E0E8C59329C466E7005D020F /* WispyAnimationController.swift in Sources */,
 				5CD3C83327DB1B6B00251F42 /* MainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,7 +413,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 667D63GCDM;
+				DEVELOPMENT_TEAM = PFVS2N86DB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CraftingGuide/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -408,7 +440,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 667D63GCDM;
+				DEVELOPMENT_TEAM = PFVS2N86DB;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CraftingGuide/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
